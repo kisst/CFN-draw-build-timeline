@@ -41,12 +41,12 @@ try:
                 r = event['LogicalResourceId']
                 if event['ResourceStatus'] == "CREATE_IN_PROGRESS":
                     try:
-                        if START_TIMES[r] < arrow.get(event['Timestamp']).timestamp:
-                            START_TIMES[r] = arrow.get(event['Timestamp']).timestamp
+                        if START_TIMES[r] < arrow.get(event['Timestamp']).timestamp():
+                            START_TIMES[r] = arrow.get(event['Timestamp']).timestamp()
                     except KeyError:
-                        START_TIMES[r] = arrow.get(event['Timestamp']).timestamp
+                        START_TIMES[r] = arrow.get(event['Timestamp']).timestamp()
                 else:
-                    END_TIMES[r] = arrow.get(event['Timestamp']).timestamp
+                    END_TIMES[r] = arrow.get(event['Timestamp']).timestamp()
                 if r not in RESOURCES:
                     RESOURCES.append(r)
 except IndexError:
